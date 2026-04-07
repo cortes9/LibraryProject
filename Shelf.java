@@ -49,6 +49,7 @@ public class Shelf {
         this.subject = subject;
     }
 
+    @Override
     public String toString() {
         return shelfNumber + " : " + subject;
     }
@@ -88,12 +89,11 @@ public class Shelf {
     }
 
     public String listBooks() {
-        String result;
+        int count = books.size();
+        String result = count + " books on shelf: " + toString();
 
-        if (books.size() == 1) {
+        if (count == 1) {
             result = "1 book on shelf: " + toString();
-        } else {
-            result = books.size() + " books on shelf: " + toString();
         }
 
         for (Book b : books.keySet()) {
@@ -103,6 +103,7 @@ public class Shelf {
         return result;
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Shelf)) return false;
@@ -112,6 +113,7 @@ public class Shelf {
                 Objects.equals(subject, other.subject);
     }
 
+    @Override
     public int hashCode() {
         return Objects.hash(shelfNumber, subject);
     }
